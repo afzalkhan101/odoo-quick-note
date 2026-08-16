@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_quick_note_list" model="ir.ui.view">
+        <field name="name">quick.note.list</field>
+        <field name="model">quick.note</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="category_id"/>
+                <field name="priority" widget="priority"/>
+                <field name="user_id"/>
+                <field name="note_date"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="view_quick_note_form" model="ir.ui.view">
+        <field name="name">quick.note.form</field>
+        <field name="model">quick.note</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="category_id"/>
+                        </group>
+
+                        <group>
+                            <field name="priority" widget="priority"/>
+                            <field name="user_id"/>
+                            <field name="note_date"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_quick_note" model="ir.actions.act_window">
+        <field name="name">Quick Notes</field>
+        <field name="res_model">quick.note</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem
+        id="menu_quick_note_root"
+        name="Quick Notes"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_quick_note"
+        name="Notes"
+        parent="menu_quick_note_root"
+        action="action_quick_note"
+        sequence="10"/>
+
+</odoo>
