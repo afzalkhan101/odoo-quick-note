@@ -1,5 +1,5 @@
 {
-    "name": "",
+    "name": "quick_note",
     "version": "18.0.1.0.0",
     "summary": "",
     "description": "",
