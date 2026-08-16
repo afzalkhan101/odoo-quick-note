@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="quick_note.GlobalQuickNote">
+
+        <div
+            t-if="state.isOpen"
+            class="quick-note-overlay"
+        >
+
+            <div class="quick-note-popup">
+
+                <!-- Header -->
+                <div class="quick-note-header">
+
+                    <h3>Quick Note</h3>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        t-on-click="closePopup"
+                        aria-label="Close"
+                    />
+
+                </div>
+
+                <!-- Body -->
+                <div class="quick-note-body">
+
+                    <!-- Title -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Title
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter note title..."
+                            t-on-input="onTitleInput"
+                            t-att-value="state.title"
+                            autofocus="autofocus"
+                        />
+
+                    </div>
+
+                    <!-- Customer -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Customer
+                        </label>
+
+                        <select
+                            class="form-select"
+                            t-on-change="onPartnerChange"
+                        >
+
+                            <option value="">
+                                Select Customer
+                            </option>
+
+                            <t t-foreach="partners" t-as="partner" t-key="partner.id">
+
+                                <option
+                                    t-att-value="partner.id"
+                                >
+                                    <t t-esc="partner.name"/>
+                                </option>
+
+                            </t>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <select
+                            class="form-select"
+                            t-on-change="onCategoryChange"
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <t
+                                t-foreach="categories"
+                                t-as="category"
+                                t-key="category.id"
+                            >
+
+                                <option
+                                    t-att-value="category.id"
+                                >
+                                    <t t-esc="category.name"/>
+                                </option>
+
+                            </t>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Priority -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Priority
+                        </label>
+
+                        <select
+                            class="form-select"
+                            t-on-change="onPriorityChange"
+                        >
+
+                            <option value="0">
+                                Normal
+                            </option>
+
+                            <option value="1">
+                                Important
+                            </option>
+
+                            <option value="2">
+                                Urgent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Description
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            placeholder="Write your note..."
+                            t-on-input="onDescriptionInput"
+                        ><t t-esc="state.description"/></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class="quick-note-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        t-on-click="closePopup"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        t-on-click="saveNote"
+                    >
+                        Save Note
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

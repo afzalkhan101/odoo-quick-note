@@ -18,7 +18,14 @@
     ],
 
    
-    "assets": {},
+    "assets": {
+        "web.assets_backend": [
+                "quick_note/static/src/js/global_quick_note.js",
+                "quick_note/static/src/xml/global_quick_note.xml",
+                "quick_note/static/src/css/global_quick_note.css",
+            ],
+    },
+
 
     "images": [
         "static/description/banner.png",
