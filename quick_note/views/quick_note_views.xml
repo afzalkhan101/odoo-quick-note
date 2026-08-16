@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <!-- Quick Note List View -->
     <record id="view_quick_note_list" model="ir.ui.view">
         <field name="name">quick.note.list</field>
         <field name="model">quick.note</field>
         <field name="arch" type="xml">
-            <list>
+            <list string="Quick Notes">
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="category_id"/>
@@ -15,12 +16,13 @@
             </list>
         </field>
     </record>
-    
+
+    <!-- Quick Note Form View -->
     <record id="view_quick_note_form" model="ir.ui.view">
         <field name="name">quick.note.form</field>
         <field name="model">quick.note</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Quick Note">
                 <sheet>
 
                     <group>
@@ -34,7 +36,7 @@
                             <field name="priority" widget="priority"/>
                             <field name="user_id"/>
                             <field name="note_date"/>
-                            <field name="active"/>
+                            <field name="active" widget="boolean_toggle"/>
                         </group>
                     </group>
 
@@ -49,24 +51,28 @@
         </field>
     </record>
 
-    <!-- Action -->
+    <!-- Quick Note Action -->
     <record id="action_quick_note" model="ir.actions.act_window">
         <field name="name">Quick Notes</field>
         <field name="res_model">quick.note</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Menu -->
+    <!-- Root Menu -->
     <menuitem
         id="menu_quick_note_root"
         name="Quick Notes"
-        sequence="10"/>
+        sequence="10"
+        web_icon="quick_note,static/description/icon.png"
+    />
 
+    <!-- Notes Menu -->
     <menuitem
         id="menu_quick_note"
         name="Notes"
         parent="menu_quick_note_root"
         action="action_quick_note"
-        sequence="10"/>
+        sequence="10"
+    />
 
 </odoo>

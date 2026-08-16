@@ -44,9 +44,9 @@ class QuickNote(models.Model):
         default=lambda self: self.env.user,
     )
 
-    note_date = fields.Date(
-        string="Note Date",
-        default=fields.Date.context_today,
+    note_date = fields.Datetime(
+            string="Note Date & Time",
+            default=fields.Datetime.now,
     )
 
     active = fields.Boolean(

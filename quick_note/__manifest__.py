@@ -15,9 +15,10 @@
     "data": [
         "security/ir.model.access.csv",
         "views/quick_note_views.xml",
+        "views/quick_note_category.xml"
     ],
 
-   
+    
     "assets": {
         "web.assets_backend": [
                 "quick_note/static/src/js/global_quick_note.js",

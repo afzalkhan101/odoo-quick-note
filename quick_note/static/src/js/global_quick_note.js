@@ -43,7 +43,6 @@ export class GlobalQuickNote extends Component {
     async onKeyDown(event) {
         if (
             event.ctrlKey &&
-            event.shiftKey &&
             event.key.toLowerCase() === "q"
         ) {
             event.preventDefault();

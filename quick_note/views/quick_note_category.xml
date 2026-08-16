@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Category List View -->
+    <record id="view_quick_note_category_list" model="ir.ui.view">
+        <field name="name">quick.note.category.list</field>
+        <field name="model">quick.note.category</field>
+        <field name="arch" type="xml">
+            <list string="Note Categories">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Category Form View -->
+    <record id="view_quick_note_category_form" model="ir.ui.view">
+        <field name="name">quick.note.category.form</field>
+        <field name="model">quick.note.category</field>
+        <field name="arch" type="xml">
+            <form string="Note Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Category Action -->
+    <record id="action_quick_note_category" model="ir.actions.act_window">
+        <field name="name">Note Categories</field>
+        <field name="res_model">quick.note.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Category Menu -->
+    <menuitem
+        id="menu_quick_note_category"
+        name="Categories"
+        parent="menu_quick_note_root"
+        action="action_quick_note_category"
+        sequence="20"
+    />
+
+</odoo>
