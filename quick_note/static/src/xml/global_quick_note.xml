@@ -114,11 +114,9 @@
 
                     <!-- Priority -->
                     <div class="mb-3">
-
                         <label class="form-label">
                             Priority
                         </label>
-
                         <div class="quick-note-priority-group">
 
                             <button
