@@ -157,6 +157,10 @@ export class GlobalQuickNote extends Component {
     onPriorityChange(event) {
         this.state.priority = event.target.value;
     }
+
+    onPrioritySelect(value) {
+        this.state.priority = value;
+    }
 }
 
 

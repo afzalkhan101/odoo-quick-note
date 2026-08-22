@@ -14,7 +14,10 @@
                 <!-- Header -->
                 <div class="quick-note-header">
 
-                    <h3>Quick Note</h3>
+                    <div class="quick-note-header-title">
+                        <i class="fa fa-sticky-note-o"/>
+                        <h3>Quick Note</h3>
+                    </div>
 
                     <button
                         type="button"
@@ -46,67 +49,66 @@
 
                     </div>
 
-                    <!-- Customer -->
-                    <div class="mb-3">
+                    <!-- Customer + Category side by side -->
+                    <div class="mb-3 quick-note-row">
 
-                        <label class="form-label">
-                            Customer
-                        </label>
+                        <div class="quick-note-col">
+                            <label class="form-label">
+                                Customer
+                            </label>
 
-                        <select
-                            class="form-select"
-                            t-on-change="onPartnerChange"
-                        >
-
-                            <option value="">
-                                Select Customer
-                            </option>
-
-                            <t t-foreach="partners" t-as="partner" t-key="partner.id">
-
-                                <option
-                                    t-att-value="partner.id"
-                                >
-                                    <t t-esc="partner.name"/>
-                                </option>
-
-                            </t>
-
-                        </select>
-
-                    </div>
-
-                    <!-- Category -->
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Category
-                        </label>
-
-                        <select
-                            class="form-select"
-                            t-on-change="onCategoryChange"
-                        >
-
-                            <option value="">
-                                Select Category
-                            </option>
-
-                            <t
-                                t-foreach="categories"
-                                t-as="category"
-                                t-key="category.id"
+                            <select
+                                class="form-select"
+                                t-on-change="onPartnerChange"
                             >
 
-                                <option
-                                    t-att-value="category.id"
-                                >
-                                    <t t-esc="category.name"/>
+                                <option value="">
+                                    Select Customer
                                 </option>
 
-                            </t>
+                                <t t-foreach="partners" t-as="partner" t-key="partner.id">
 
-                        </select>
+                                    <option
+                                        t-att-value="partner.id"
+                                    >
+                                        <t t-esc="partner.name"/>
+                                    </option>
+
+                                </t>
+
+                            </select>
+                        </div>
+
+                        <div class="quick-note-col">
+                            <label class="form-label">
+                                Category
+                            </label>
+
+                            <select
+                                class="form-select"
+                                t-on-change="onCategoryChange"
+                            >
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                                <t
+                                    t-foreach="categories"
+                                    t-as="category"
+                                    t-key="category.id"
+                                >
+
+                                    <option
+                                        t-att-value="category.id"
+                                    >
+                                        <t t-esc="category.name"/>
+                                    </option>
+
+                                </t>
+
+                            </select>
+                        </div>
 
                     </div>
 
@@ -117,24 +119,36 @@
                             Priority
                         </label>
 
-                        <select
-                            class="form-select"
-                            t-on-change="onPriorityChange"
-                        >
+                        <div class="quick-note-priority-group">
 
-                            <option value="0">
+                            <button
+                                type="button"
+                                t-att-class="'priority-pill priority-normal' + (state.priority === '0' ? ' active' : '')"
+                                t-on-click="() => this.onPrioritySelect('0')"
+                            >
+                                <span class="priority-dot"/>
                                 Normal
-                            </option>
+                            </button>
 
-                            <option value="1">
+                            <button
+                                type="button"
+                                t-att-class="'priority-pill priority-important' + (state.priority === '1' ? ' active' : '')"
+                                t-on-click="() => this.onPrioritySelect('1')"
+                            >
+                                <span class="priority-dot"/>
                                 Important
-                            </option>
+                            </button>
 
-                            <option value="2">
+                            <button
+                                type="button"
+                                t-att-class="'priority-pill priority-urgent' + (state.priority === '2' ? ' active' : '')"
+                                t-on-click="() => this.onPrioritySelect('2')"
+                            >
+                                <span class="priority-dot"/>
                                 Urgent
-                            </option>
+                            </button>
 
-                        </select>
+                        </div>
 
                     </div>
 
@@ -146,7 +160,7 @@
                         </label>
 
                         <textarea
-                            class="form-control"
+                            class="form-control quick-note-textarea"
                             rows="5"
                             placeholder="Write your note..."
                             t-on-input="onDescriptionInput"
@@ -172,6 +186,7 @@
                         class="btn btn-primary"
                         t-on-click="saveNote"
                     >
+                        <i class="fa fa-check me-1"/>
                         Save Note
                     </button>
 
